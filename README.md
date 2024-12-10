@@ -1,8 +1,5 @@
 # Greeting App Deployment
 
-> Note: While LLM's are available to me, I have chosen to stick to documentation, Google, and Stack Overflow for this exercise.
-Where I already know the answer but cannot remember the specific names/terms, I will allow myself to use an LLM (Claude Sonnet) to help me find the specific documentation/terms.
-
 ## Containerization
 - Had to first install Docker Desktop for Mac
 - Quick refresher on Docker commands via [Tutorial: Create a Docker app with Visual Studio Code](https://learn.microsoft.com/en-gb/visualstudio/docker/tutorials/docker-tutorial?WT.mc_id=vscode_docker_aka_getstartedwithdocker)
@@ -40,4 +37,22 @@ docker-compose down
 ```
 
 ## CI/CD Pipeline
-- Using GitHub Actions for CI/CD pipeline, as I have previously used that
+- Using GitHub Actions for CI/CD pipeline, as I have briefly used that. But most of this is new to me.
+
+### Build stage
+- Leveraged LLM to understand what is being asked. Initially went off on the wrong path.
+- job name: build
+
+### Test stage
+- Again, went off on the wrong path. Hard to find discussions around correct way to setup test environment. Questions like
+  - Can I reuse the image from the build stage?
+    - Seems like no, as each job is a separate runner.
+    - Okay, so I separate into different jobs.
+  - Should I use the docker-compose file to run the test stage?
+    - I imagine a case where you want to test api / db together, so I went with building the compose file.
+  - Deployment , TODO
+
+- Tested locally first
+```bash
+docker compose run --rm api pnpm test
+```
