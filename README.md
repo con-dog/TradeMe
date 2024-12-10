@@ -56,3 +56,11 @@ docker-compose down
 ```bash
 docker compose run --rm api pnpm test
 ```
+
+### Deployment stage
+Ran out of time, too new to me.
+
+## Triggering the pipeline
+- I have setup the pipeline to trigger on push to main branch.
+  - This probably isn't the best idea, instead would protect the main branch from direct pushes, and only allow PRs.
+  - Instead set the trigger to run on PR to main etc.
